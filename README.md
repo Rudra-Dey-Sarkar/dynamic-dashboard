@@ -1,5 +1,25 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# Test Email and Password
+email :- user@example.com
+password :- password123
+
+## Links
+Deployed Application Link :- https://dynamic-dashboard-taupe.vercel.app/
+
+Github Link :- https://github.com/Rudra-Dey-Sarkar/dynamic-dashboard
+
+## Contacts
+In case you have any doubts you can contact me using below details :-
+
+Email Id :- rudradeysarkar5@gmail.com
+
+Contact No. :- +917811914148
+
+Whatsapp No. :- +919475204453
+
+LinkedIn :- https://www.linkedin.com/in/rudra-dey-sarkar-5625331ba/
+
 ## Getting Started
 
 First, run the development server:
