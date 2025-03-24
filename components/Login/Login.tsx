@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form"
 import { login } from "../../lib/authentication";
 import toast from "react-hot-toast";
+import { Eye, EyeClosed } from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 
 type CredentialsDataType = {
@@ -12,7 +14,7 @@ type CredentialsDataType = {
     password: string
 }
 // Controlling login feature
-const controlLogin = (router: AppRouterInstance, data: CredentialsDataType) => {
+function controlLogin(router: AppRouterInstance, data: CredentialsDataType){
     const token = login(data?.email, data?.password);
     if (token) {
         toast.success("Login successful");
@@ -21,9 +23,19 @@ const controlLogin = (router: AppRouterInstance, data: CredentialsDataType) => {
         toast.error("Invalid credentials");
     }
 };
+// Controlling password visibility
+function controlPasswordVisibility( isPasswordVisible: boolean,setIsPasswordVisible: Dispatch<SetStateAction<boolean>>){
+    if(isPasswordVisible===false){
+        setIsPasswordVisible(true);
+    }else{
+        setIsPasswordVisible(false);
+    }
+}
 
 const Login = () => {
     const router = useRouter();
+    const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
     const form = useForm<CredentialsDataType>({
         defaultValues: {
             email: "",
@@ -64,18 +76,28 @@ const Login = () => {
                     <label
                         htmlFor="password"
                         className="text-[15px] font-semibold">Enter Your Password :-</label>
-                    <input
-                        type="password"
-                        {...register("password", {
-                            required: "Password is required",
-                            minLength: {
-                                value: 6,
-                                message: "Password must be at least 6 characters",
-                            },
-                        })}
-                        placeholder="Enter your password"
-                        className="border p-2 mb-2"
-                    />
+                    <div className="flex justify-center items-center border mb-2">
+                        <input
+                            type={`${isPasswordVisible===true ? "text" : "password"}`}
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 6,
+                                    message: "Password must be at least 6 characters",
+                                },
+                            })}
+                            placeholder="Enter your password"
+                            className="p-2"
+                        />
+                        <button 
+                        type="button"
+                        onClick={()=>controlPasswordVisibility( isPasswordVisible,setIsPasswordVisible)}>
+                            {isPasswordVisible === true ?
+                                <EyeClosed />
+                                :
+                                <Eye />}
+                        </button>
+                    </div>
                     {errors?.password && <p className="text-red-500 text-[15px]">{errors.password.message}</p>}
 
                     {/* Button to submit the credentials */}
