@@ -12,7 +12,7 @@ function controlSidebar(isSidebarOpen: boolean, setIsSidebarOpen: React.Dispatch
     }
 }
 
-function Sidebar() {
+function Sidebar({ isDark,setIsDark }: { isDark: boolean ,setIsDark: React.Dispatch<React.SetStateAction<boolean>> }) {
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
      
@@ -25,14 +25,14 @@ function Sidebar() {
     },[])
 
     return (
-        <div className='absolute sm:relative bg-white border-r-1 border-green-500 py-2 min-h-[100vh] w-fit'>
+        <div className={`absolute sm:relative ${isDark===true ? "bg-black text-white" : "bg-white text-black"}  border-r-1 border-green-500 py-2 min-h-[100vh] w-fit`}>
             <div className='flex justify-end p-2 mb-7'>
                 <button
                     className='grid gap-y-1 hover:cursor-pointer'
                     onClick={() => controlSidebar(isSidebarOpen, setIsSidebarOpen)}>
-                    <div className='bg-black w-[25px] h-[2px]' />
-                    <div className='bg-black w-[25px] h-[2px]' />
-                    <div className='bg-black w-[25px] h-[2px]' />
+                    <div className={`${isDark===true ? "bg-white" : "bg-black"} w-[25px] h-[2px]`} />
+                    <div className={`${isDark===true ? "bg-white" : "bg-black"} w-[25px] h-[2px]`} />
+                    <div className={`${isDark===true ? "bg-white" : "bg-black"} w-[25px] h-[2px]`} />
                 </button>
             </div>
 

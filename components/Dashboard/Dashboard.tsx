@@ -116,25 +116,6 @@ function Dashboard() {
           {search.length === 0 && (
             <div className="grid justify-center items-center gap-4 mt-4">
 
-              <div className="flex justify-center gap-x-32">
-
-                {/* Previous Button */}
-                <button
-                  className="font-bold hover:cursor-pointer"
-                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-                >
-                  Previous
-                </button>
-
-                {/* Next Button */}
-                <button
-                  className="font-bold hover:cursor-pointer"
-                  onClick={() => setPage((prev) => Math.min(prev + 1, numPages.length))}
-                >
-                  Next
-                </button>
-              </div>
-
               {/* Pagination Buttons */}
               <div className="flex gap-2">
 
@@ -166,6 +147,26 @@ function Dashboard() {
                     &raquo;
                   </button>
                 )}
+              </div>
+              {/* Next and Previous buttons */}
+              <div className="flex justify-center gap-x-32">
+
+
+                {/* Previous Button */}
+                <button
+                  className="font-bold hover:cursor-pointer"
+                  onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+                >
+                  Previous
+                </button>
+
+                {/* Next Button */}
+                <button
+                  className="font-bold hover:cursor-pointer"
+                  onClick={() => setPage((prev) => Math.min(prev + 1, numPages.length))}
+                >
+                  Next
+                </button>
               </div>
             </div>
           )}

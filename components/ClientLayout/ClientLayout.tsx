@@ -1,14 +1,16 @@
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Toaster } from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
 
+
 function ClientLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const pathname = usePathname();
+    const [isDark, setIsDark]=useState<boolean>(false);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -20,15 +22,15 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
     }, []);
 
     return (
-        <div>
+        <div className={`${isDark===true ? "bg-black text-white" : ""}`}>
             <Toaster />
             {/* Header feature */}
             {pathname !== "/" &&
-                <Header />
+                <Header isDark={isDark} setIsDark={setIsDark} />
             }
             <div className='flex'>
                 {pathname !== "/" &&
-                    <Sidebar />
+                    <Sidebar isDark={isDark} setIsDark={setIsDark} />
                 }
                 {children}
             </div>
