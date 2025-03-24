@@ -30,7 +30,7 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
             }
             <div className='flex'>
                 {pathname !== "/" &&
-                    <Sidebar isDark={isDark} setIsDark={setIsDark} />
+                    <Sidebar isDark={isDark} />
                 }
                 {children}
             </div>

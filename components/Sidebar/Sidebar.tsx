@@ -12,7 +12,7 @@ function controlSidebar(isSidebarOpen: boolean, setIsSidebarOpen: React.Dispatch
     }
 }
 
-function Sidebar({ isDark,setIsDark }: { isDark: boolean ,setIsDark: React.Dispatch<React.SetStateAction<boolean>> }) {
+function Sidebar({ isDark }: { isDark: boolean }) {
     const pathname = usePathname();
     const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
      
