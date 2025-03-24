@@ -32,7 +32,7 @@ function Header({ isDark,setIsDark }: { isDark: boolean ,setIsDark: React.Dispat
     const [isUserActive, setUserActive] = useState<boolean>(false);
 
     return (
-        <div className='p-5 border-b-1 border-green-500 flex justify-end'>
+        <div className='p-5 border-b-1 border-green-500 flex justify-end gap-x-2'>
             <button onClick={() => controlDarkmode(isDark, setIsDark)}>{isDark===true ?<SunIcon/>:<MoonIcon/>}</button>
             <div className='relative'>
                 <button
